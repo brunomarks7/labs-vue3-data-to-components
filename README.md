@@ -2,7 +2,7 @@
 ### Dynamic props - one way data bind between child/child components
 
 ## Demo
-![./src/assets/demo.png](demo.png)
+![src/assets/demo.png](demo.png)
 
 ## Project setup
 ```
