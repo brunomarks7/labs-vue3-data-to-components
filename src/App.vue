@@ -2,7 +2,7 @@
   <img alt="Vue logo" src="./assets/star-wars.svg" width="350">
   <HelloWorld :people="people"/>
   <br />
-  <button @click="loadpeople">Load Star Wars People</button>
+  <button @click="loadpeople">{{loading ? 'Loading' : 'Load People'}}</button>
 </template>
 
 <script>
@@ -20,6 +20,7 @@ export default defineComponent ({
     let loading = ref(false);
 
     const loadpeople = () => {
+      if(loading.value) return false;
       loading.value = true;
       fetch("https://swapi.dev/api/people")
         .then(res => res.json())
