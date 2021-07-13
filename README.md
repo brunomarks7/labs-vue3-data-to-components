@@ -1,4 +1,4 @@
-# Vue 3 - test 
+# Vue 3 - test Swapi API
 ### Dynamic props - one way data bind between child/child components
 
 ## Demo
