@@ -1,6 +1,8 @@
 <template>
   <img alt="Vue logo" src="./assets/star-wars.svg" width="350">
-  <HelloWorld :people="people"/>
+  <HelloWorld>
+      <ChildChild :people="people" :removeItem="removeItem" />
+  </HelloWorld>
   <br />
   <button @click="loadpeople">{{loading ? 'Loading' : 'Load People'}}</button>
 </template>
@@ -8,12 +10,14 @@
 <script>
 import {defineComponent, ref} from "vue"
 import HelloWorld from './components/HelloWorld.vue'
+import ChildChild from './components/ChildChild.vue';
 
 
 export default defineComponent ({
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    ChildChild
   },
   setup(){
     let people = ref([]);
@@ -31,9 +35,16 @@ export default defineComponent ({
         })
     }
 
+    const removeItem = (index) => {
+      people.value = people.value.filter((v, ind) => {
+        return ind != index
+      })
+    }
+
     return {
       people,
       loadpeople,
+      removeItem,
       loading
     }
   }

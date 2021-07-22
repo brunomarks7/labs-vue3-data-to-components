@@ -2,7 +2,7 @@
   <div class="hello2">
     <ul v-if="people.length">
       <li v-for="(people, index) in people" :key="index">
-        <span>{{people}}</span>
+        <span>{{people}} <button @click="removeItem(index)">remove</button></span>
       </li>
     </ul>
     <h2 v-else>Star Wars People</h2>
@@ -10,12 +10,17 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from "vue";
+export default defineComponent ({
   name: 'ChildChild',
   props: {
-    people: Array
+    people: Array,
+    removeItem: {
+      type: Function,
+      default: (index) => console.log(index)
+    }
   }
-}
+})
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -33,8 +38,8 @@ ul {
   padding: 0;
 }
 li {
-  display: inline-block;
-  margin: 0 10px;
+  display: block;
+  margin: 0 0 15px;
   padding: 10px;
 }
 a {
